@@ -1,11 +1,11 @@
 {
     "schema_version": 1,
-    "commit": "2a1fd4cf9f4b35536a98877d3aba204f3c330486",
-    "indexed_at": "2026-08-13T22:35:22Z",
+    "commit": "a8aa8ed4f9c98abab17ceb4297b91665396d532b",
+    "indexed_at": "2026-08-13T22:36:23Z",
     "project": "home-ed-tempo-projects-blockchainlatam.org",
-    "nodes": 224,
-    "edges": 224,
+    "nodes": 225,
+    "edges": 225,
     "original_size": 1900544,
-    "compressed_size": 89240,
+    "compressed_size": 89589,
     "compression_level": 3
 }
