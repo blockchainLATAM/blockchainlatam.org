@@ -18,8 +18,12 @@ if (action !== 'patch') {
   throw new Error(`Unknown release action: ${action}. Use patch or push.`)
 }
 
-const status = execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' }).trim()
-if (status) {
+const status = execFileSync('git', ['status', '--porcelain'], { encoding: 'utf8' })
+const unexpectedChanges = status
+  .split('\n')
+  .filter(Boolean)
+  .filter((line) => !line.slice(3).startsWith('.codebase-memory/'))
+if (unexpectedChanges.length > 0) {
   throw new Error('Release requires a clean working tree. Commit the release changes before running pnpm release:patch.')
 }
 
