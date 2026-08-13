@@ -16,13 +16,24 @@ pnpm dev
 
 The repo defaults to Node `22.22.2` via `.nvmrc`, `.node-version`, and the root `engines` field.
 
-## 📋 Latest Changes (v0.1.0)
+## 📋 Latest Changes (v0.1.1)
 
-### Added
+### Bug Fixes
 
-- Initial Blockchain LATAM editorial landing page prototype.
-- pnpm/Turbo monorepo with the web app and deployment wrapper.
-- Release metadata and version synchronization workflow.
+* ignore generated index churn in release check ([c1e4243](https://github.com/blockchainLATAM/blockchainlatam.org/commit/c1e42434bc01767f4f10b3a40940ec76e392da4f))
+
+
+### Features
+
+* document release workflow ([a8aa8ed](https://github.com/blockchainLATAM/blockchainlatam.org/commit/a8aa8ed4f9c98abab17ceb4297b91665396d532b))
+
+
+
+
+
+# Changelog
+
+All notable changes to blockchainlatam.org are documented here.
 
 For full version history, see [CHANGELOG.md](./CHANGELOG.md) and [GitHub releases](https://github.com/blockchainLATAM/blockchainlatam.org)
 
