@@ -1,0 +1,32 @@
+{
+  "name": "@blockchainlatam/infra",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./config": {
+      "types": "./dist/config.d.ts",
+      "import": "./dist/config.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "deploy:dev": "sst deploy --stage dev",
+    "deploy:prod": "sst deploy --stage production"
+  },
+  "dependencies": {
+    "@lsts_tech/infra": "1.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.9",
+    "sst": "^3.7.0",
+    "typescript": "^5.8.3"
+  }
+}

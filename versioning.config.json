@@ -1,0 +1,52 @@
+{
+  "rootPackageJson": "package.json",
+  "packages": ["packages/*", "apps/*"],
+  "changelogFile": "CHANGELOG.md",
+  "conventionalCommits": true,
+  "syncDependencies": true,
+  "ignorePackages": [],
+  "branchAwareness": {
+    "enabled": true,
+    "defaultBranch": "main",
+    "branches": {
+      "main": {
+        "versionFormat": "semantic",
+        "tagFormat": "v{version}",
+        "syncFiles": [
+          "package.json",
+          "version.production.json",
+          "apps/web-app/package.json",
+          "packages/infra/package.json"
+        ],
+        "environment": "production",
+        "bumpStrategy": "semantic"
+      },
+      "agent/*": {
+        "versionFormat": "semantic",
+        "tagFormat": "v{version}",
+        "syncFiles": [
+          "package.json",
+          "version.production.json",
+          "apps/web-app/package.json",
+          "packages/infra/package.json"
+        ],
+        "environment": "production",
+        "bumpStrategy": "semantic"
+      }
+    }
+  },
+  "releaseGuard": {
+    "enabled": true,
+    "tagPrefix": "v",
+    "metadataFiles": ["version.production.json"],
+    "checkReleaseFloor": true
+  },
+  "extensionConfig": {
+    "secrets-check": {
+      "enabled": true
+    },
+    "readme-maintainer": {
+      "repositoryUrl": "https://github.com/blockchainLATAM/blockchainlatam.org"
+    }
+  }
+}

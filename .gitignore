@@ -1,0 +1,8 @@
+tempo/.tempo/
+tempo/node_modules/
+tempo/dist/
+.tempo/
+.turbo/
+node_modules/
+apps/*/node_modules/
+packages/*/node_modules/

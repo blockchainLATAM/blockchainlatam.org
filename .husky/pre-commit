@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+set -eu
+
+echo "🔒 Checking staged files for private information"
+pnpm exec versioning check-secrets
+
+echo "🔢 Checking synchronized package versions"
+pnpm exec versioning validate
+
+RELEASE_VERSION="$(pnpm exec node -p "require('./version.production.json').version")"
+echo "📝 Checking README and changelog tracking for v${RELEASE_VERSION}"
+pnpm exec versioning check-changelog --version "${RELEASE_VERSION}"
+pnpm exec node scripts/check-release-metadata.mjs
