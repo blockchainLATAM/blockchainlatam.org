@@ -35,3 +35,14 @@ pnpm typecheck
 pnpm version:sync
 pnpm infra:build
 ```
+
+## Release workflow
+
+The release source of truth is `version.production.json`, maintained by `@edcalderon/versioning`. The footer and all workspace package versions read from or synchronize to that value.
+
+```bash
+pnpm release:patch
+pnpm release:push
+```
+
+The patch workflow validates secrets, package synchronization, README tracking, changelog entries, lint, typecheck, and build before committing and tagging the release.
