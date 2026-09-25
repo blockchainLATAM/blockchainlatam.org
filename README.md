@@ -16,6 +16,30 @@ pnpm dev
 
 The repo defaults to Node `22.22.2` via `.nvmrc`, `.node-version`, and the root `engines` field.
 
+## Deployment
+
+`apps/web-app` deploys to **GitHub Pages** via [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml): every push to `main` typechecks and builds the app with pnpm, then publishes `apps/web-app/dist` with the official `actions/upload-pages-artifact` + `actions/deploy-pages` actions. Trigger a deploy manually from the Actions tab (`workflow_dispatch`) if needed.
+
+The custom domain (`blockchainlatam.org`) is set in the repo's Pages settings and kept in place across deploys by [`apps/web-app/public/CNAME`](apps/web-app/public/CNAME), which Vite copies into every build output.
+
+**DNS is manual** — it is not managed from this repo. Whoever administers the `blockchainlatam.org` DNS zone must point it at GitHub Pages:
+
+| Type | Host | Value |
+|---|---|---|
+| A | `@` | 185.199.108.153 |
+| A | `@` | 185.199.109.153 |
+| A | `@` | 185.199.110.153 |
+| A | `@` | 185.199.111.153 |
+| AAAA | `@` | 2606:50c0:8000::153 |
+| AAAA | `@` | 2606:50c0:8001::153 |
+| AAAA | `@` | 2606:50c0:8002::153 |
+| AAAA | `@` | 2606:50c0:8003::153 |
+| CNAME | `www` | `blockchainlatam.github.io` |
+
+Once those records resolve, GitHub automatically issues the TLS certificate and enables "Enforce HTTPS" — no further action needed.
+
+`packages/infra` (AWS SST/Route 53/CloudFront/CodePipeline) still exists in the repo but is not the active deployment path; see `packages/infra/README.md` for that setup if it's ever needed again.
+
 ## 📋 Latest Changes (v0.1.1)
 
 ### Bug Fixes
